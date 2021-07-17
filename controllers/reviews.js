@@ -5,20 +5,26 @@ export{
     newReview as new,
     index, 
     create,
-    // show,
+    show,
 
 }
 
-// function show(req, res){
-//     Review.findById(req.params.reviewId)
-//     .populate("reviewer")
-// }
+function show(req, res){
+    Review.findById(req.params.reviewId)
+    .populate("reviewer")
+    .then(review =>{
+        res.render('reviews/show', {
+            review,
+            title: "review"
+        })
+    })
+}
 
 
 function create(req, res){
     req.body.reviewer = req.user.profile 
     Review.create(req.body)
-    .then(taco =>{
+    .then(review =>{
         res.redirect('/reviews')
     })
     .catch(err =>{
