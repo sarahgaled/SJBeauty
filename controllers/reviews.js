@@ -6,7 +6,22 @@ export{
     index, 
     create,
     show,
+    edit,
 
+}
+
+function edit(req, res){
+    Review.findById(req.params.id)
+    .then(review =>{
+        res.render('reviews/edit', {
+            review,
+            title: "edit"
+        })
+    })
+    .catch(err => {
+        console.log(err)
+        res.redirect('/reviews')
+    })
 }
 
 function show(req, res){
@@ -15,7 +30,7 @@ function show(req, res){
     .then(review =>{
         res.render('reviews/show', {
             review,
-            title: "review"
+            title: "show review"
         })
     })
 }
