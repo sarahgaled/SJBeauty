@@ -8,7 +8,7 @@ export{
 const reviewSchema = new Schema({
     review: String,
     rating: Number,
-    profile: {objectId, ref: "Profile"}
+    reviewer: { type: mongoose.Schema.Types.ObjectId, ref: "Profile"}
 })
 
 const Review = mongoose.model('Review', reviewSchema)
