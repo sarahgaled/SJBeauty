@@ -8,15 +8,24 @@
 
 <h1>Reviews</h1>
 <% if (user) { %>
-    <h2>Add a review!</h2>
+    <h2>What was your experience with this product?</h2>
 <form action="/reviews" method="POST">
 <label>
     Review:
     <input type="text" name="review" autocomplete="off">
 </label>
-
+<button type="submit">Add Review</button>
 </form>
+<h2>All the reviews</h2>
+<ul>
+    <% reviews.forEach(review => { %>
+    <li>
+        <a href="/reviews/<% review._id %>"><%= review.name %></a>
+    </li>    
+    <% }) %>
+</ul>
+</section>
 <% } %>
 
-</section>
+
 <%- include('../partials/footer') %>

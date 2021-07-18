@@ -6,6 +6,7 @@ export{
 }
 
 const reviewSchema = new Schema({
+    name: String,
     review: String,
     rating: Number,
     reviewer: { type: mongoose.Schema.Types.ObjectId, ref: "Profile"}

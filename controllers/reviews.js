@@ -34,8 +34,8 @@ function edit(req, res){
 }
 
 function show(req, res){
-    Review.findById(req.params.reviewId)
-    .populate("reviewer")
+    Review.findById(req.params.reviewId) //find the review by its id, gonna use what its passing in on its parameters
+    .populate("reviewer") //populate the reviewer field w actual data. turns the ob id turns into the entire doc of the owner and will hold all the data it needs to. populate all that data to the owner
     .then(review =>{
         res.render('reviews/show', {
             review,
@@ -46,7 +46,7 @@ function show(req, res){
 
 
 function create(req, res){
-    req.body.reviewer = req.user.profile 
+    req.body.reviewer = req.user.profile //setting that logged in users profile to the reviewer
     Review.create(req.body)
     .then(review =>{
         res.redirect('/reviews')
