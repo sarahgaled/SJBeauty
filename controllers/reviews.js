@@ -1,4 +1,4 @@
-import { Review } from '../models/review.js'
+import { Review } from '../models/review.js' //getting our model
 
 
 export{
@@ -15,7 +15,7 @@ export{
 function update(req, res){
     Review.findById(req.params.id)
     .then(review =>{
-        
+
     })
 }
 
@@ -57,10 +57,10 @@ function create(req, res){
     })
 }
 
-function index(req, res){
-   Review.find({})
+function index(req, res){ //seeing all our reviews
+   Review.find({}) //the object will return everything from our reviews 
    .then(reviews =>{
-       res.render("reviews/index", {
+       res.render("reviews/index", { //
            reviews,
            title: "Reviews"
        })
