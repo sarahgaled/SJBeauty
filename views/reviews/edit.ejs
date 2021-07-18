@@ -1,0 +1,21 @@
+<%- include('../partials/html-head') %>
+<%- include('../partials/nav') %>
+
+<section>
+
+<h1>Edit your Review!</h1>
+<form action="/reviews/<%= review._id %>?_method=PUT" method="POST">
+<label>
+    Name:
+    <input
+    type="text"
+    name="name"
+    value="<%=review.name %>"
+    autocomplete="off"
+    >
+</label>
+<button type="submit">Edit your Review</button>
+</form>
+</section>
+
+<%- include('../partials/footer') %>

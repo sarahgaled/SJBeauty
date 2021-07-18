@@ -10,9 +10,11 @@ const router = Router()
 
 //localhost:3000/reviews
 router.get('/', reviewsCtrl.index) //creating the route to point to our controller function
-router.get('/reviews/:id', reviewsCtrl.show)
-router.get('/reviews/:id/edit', reviewsCtrl.edit)
+router.get('/:reviewId', reviewsCtrl.show) 
+router.get('/:id/edit', reviewsCtrl.edit)
+router.post('/', isLoggedIn, reviewsCtrl.create)
+router.post('/:id', reviewsCtrl.update)
+
+
 //localhost:3000/reviews/new
 router.get('/new', reviewsCtrl.new)
-router.post('/', isLoggedIn, reviewsCtrl.create)
-router.post('/reviews/:id', reviewsCtrl.update)

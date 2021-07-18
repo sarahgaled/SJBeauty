@@ -2,8 +2,12 @@
 <%- include('../partials/nav') %>
 
 <section>
-    <p><%= review.owner.name %>'s Profile</p>
-    <h1><%= review.name %>something</h1>
+    <p><%= review.reviewer.name %>'s Profile</p>
+    <h1><%= review.name %>Edit your review here</h1>
+    <% if (user) { %>
+        <form action="/reviews/"<%= review._id %>
+
+    <% } %>
 </section>
 
 
