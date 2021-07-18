@@ -14,3 +14,4 @@ router.get('/reviews/:id/edit', reviewsCtrl.edit)
 //localhost:3000/reviews/new
 router.get('/new', reviewsCtrl.new)
 router.post('/', reviewsCtrl.create)
+router.post('/reviews/:id', reviewsCtrl.update)

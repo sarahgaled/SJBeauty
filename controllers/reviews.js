@@ -7,7 +7,16 @@ export{
     create,
     show,
     edit,
+    update
 
+}
+
+
+function update(req, res){
+    Review.findById(req.params.id)
+    .then(review =>{
+        
+    })
 }
 
 function edit(req, res){
