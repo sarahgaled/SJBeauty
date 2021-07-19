@@ -15,7 +15,10 @@ const reviewSchema = new Schema({ //embedding reviewSchema in my products model
 const productSchema = new Schema({
     name: String,
     clean: Boolean,
-    category: String,
+    category: {
+        type: String,
+        enum: ["Beauty", "Skincare"]
+        },
     reviews:[reviewSchema],
     
 })
