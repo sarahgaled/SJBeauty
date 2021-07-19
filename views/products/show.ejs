@@ -1,0 +1,38 @@
+<%- include('../partials/html-head') %>
+<%- include('../partials/nav') %>
+
+
+<h1>Reviews</h1>
+
+<h2>What was your experience with this product?</h2>
+<% if (user) { %>
+
+    <form action="/products/<%= product._id %>/reviews" method="POST">
+      <label>
+        Name: 
+        <input type="text" name="name" autocomplete="off">
+      </label><br>
+      <label>
+        Review: 
+        <input type="text" name="review" autocomplete="off">
+      </label><br>
+      <label>
+        Breed: 
+        <input type="number" name="rating" autocomplete="off">
+      </label><br>
+      <button type="submit">Add Review</button>
+    </form>
+  <% } %>
+
+
+
+<h2>All the reviews</h2>
+<ul>
+    <% product.reviews.forEach(review => { %>
+    <li>
+        <%= review.review %>
+    </li>    
+    <% }) %>
+</ul>
+
+<%- include('../partials/footer') %>

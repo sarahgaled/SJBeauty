@@ -9,22 +9,18 @@
             Name:
             <input type="text" name="name" autocomplete="off">
         </label><br>
-        <label>
-            Rating from 1 to 5: 
-            <input type ="number" name="rating" autocomplete="off">
-        </label><br> 
+        <label>Category
+            <select type="text" name="category">
+                <option value="Beauty">Beauty</option>
+                <option value="Skincare">Skincare</option>       
+        </select>
+        </label>
         <label>
             Clean?
             <input type="checkbox" name="clean">
         </label><br>
-        
         <button type="submit">Add Products</button>
         </form>
-<div>
-    <label>
-        Name:
-    </label>
-</div>
     <h2>All the Products!</h2>
     <ul>
         <% products.forEach(product => { %>
