@@ -60,7 +60,7 @@ function create(req, res) {
 
 function index(req, res) {
     Product.find({})
-        .then(product => {
+        .then(products => {
             res.render('products/index', {
                 products,
                 title: "productsss"
@@ -74,8 +74,8 @@ function index(req, res) {
 
 
 function deleteReview(req, res){
-    Review.findById(req.params.id)
-    .then(review => {
+    Product.findById(req.params.id)
+    .then(product => {
         if(review.reviewer.equals(req.user.profile._id)){
             review.delete()
             .then(() => {
@@ -93,8 +93,8 @@ function deleteReview(req, res){
 
 
 function updateReview(req, res) {
-    Review.findById(req.params.id)
-        .then(review => {
+    Product.findById(req.params.id)
+        .then(product => {
             if (review.reviewer.equals(req.user.profile._id)) { //if the owner of the reviewer has submitted the request
                 review.update(req.body, { new: true })//if no new true here
                     .then(review => { //what exists here is the old data for the review
@@ -113,11 +113,13 @@ function updateReview(req, res) {
 
 
 function editReview(req, res) {
-    Review.findById(req.params.id)
-        .then(review => {
+    Product.findById(req.params.productId)
+        .then(product => {
+            const review = product.reviews.id(reviewId) //finding the review  by its id in this product
+            console.log(review)
             res.render('products/edit', {
                 review,
-                title: "edit"
+                title: "edit reviews"
             })
         })
         .catch(err => {
@@ -128,7 +130,7 @@ function editReview(req, res) {
 
 
 function createReview(req, res) {
-    Review.findById(req.user.profile._id) //find the product of the user that is making this request
+    Product.findById(req.user.profile._id) //find the product of the user that is making this request
         .then(product => { //then with that product
             products.reviews.push(req.body) //pushing req.body into reviews array
             products.save() //save the product , it is the resource thats holding reviews

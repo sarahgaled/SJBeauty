@@ -3,13 +3,22 @@
 
 <section>
     <h1>Products</h1>
+
+    <form action="/products" method="POST">
+        <label>
+            Name:
+            <input type="text" name="name" autocomplete="off">
+        </label>
+        <label>
+            Clean?
+            <input type="checkbox" name="clean">
+        </label>
+        
+        <button type="submit">Add Products</button>
+        </form>
 <div>
     <label>
         Name:
-    </label>
-    <label>
-        Clean?
-        <input type="checkbox" name="name">
     </label>
 </div>
     <h2>All the Products!</h2>
