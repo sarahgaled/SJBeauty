@@ -8,6 +8,11 @@
         <p>
             <a class="link" href="/reviews/<%= review._id %>/edit"> Edit this Review</a>
         </p>
+        <p>
+            <form action="/reviews/<%= review._id %>?_method=DELETE" method="POST">
+                <button type="submit">Delete this review</button>
+            </form>
+        </p>
     <% } %>
 </section>
 

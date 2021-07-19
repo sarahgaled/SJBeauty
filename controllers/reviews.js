@@ -7,8 +7,27 @@ export{
     create,
     show,
     edit,
-    update
+    update,
+    deleteReview as delete
+}
 
+function deleteReview(req, res){
+    Review.findById(req.params.Id)
+    .then(review => {
+        if (review.reviewer.equals(req.user.profile._id)){
+            //if same user, allow the action
+            review.delete()
+            .then(() => {
+                res.redirect("/reviews")
+            })
+        } else{ //if not disallow
+            throw new Error("NOT AUTHORIZED")
+        }
+    }) 
+     .catch(err => {
+        console.log(err)
+        res.redirect('/reviews')
+    })
 }
 
 

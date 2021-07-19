@@ -14,6 +14,7 @@ router.get('/:reviewId', reviewsCtrl.show)
 router.get('/:id/edit', isLoggedIn, reviewsCtrl.edit) //do i need isloggedin here?
 router.post('/', isLoggedIn, reviewsCtrl.create)
 router.put('/:id', isLoggedIn, reviewsCtrl.update)
+router.delete('/:id', isLoggedIn, reviewsCtrl.delete)
 
 
 //localhost:3000/reviews/new
