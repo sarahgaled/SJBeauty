@@ -5,7 +5,7 @@ export{
     Product 
 }
 
-const reviewSchema = new Schema({
+const reviewSchema = new Schema({ //embedding reviewSchema in my products model
     name: String,
     review: String,
     rating: Number,
