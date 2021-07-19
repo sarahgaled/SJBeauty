@@ -11,9 +11,9 @@ const router = Router()
 //localhost:3000/reviews
 router.get('/', reviewsCtrl.index) //creating the route to point to our controller function
 router.get('/:reviewId', reviewsCtrl.show) 
-router.get('/:id/edit', reviewsCtrl.edit)
+router.get('/:id/edit', isLoggedIn, reviewsCtrl.edit) //do i need isloggedin here?
 router.post('/', isLoggedIn, reviewsCtrl.create)
-router.post('/:id', reviewsCtrl.update)
+router.put('/:id', isLoggedIn, reviewsCtrl.update)
 
 
 //localhost:3000/reviews/new

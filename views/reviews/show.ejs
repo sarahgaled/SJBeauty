@@ -4,9 +4,10 @@
 <section>
     <p><%= review.reviewer.name %>'s Profile</p>
     <h1><%= review.name %>Edit your review here</h1>
-    <% if (user) { %>
-        <form action="/reviews/"<%= review._id %>
-
+    <% if (review.reviewer.equals(user?.profile._id)) { %>
+        <p>
+            <a class="link" href="/reviews/<%= review._id %>/edit"> Edit this Review</a>
+        </p>
     <% } %>
 </section>
 
