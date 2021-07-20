@@ -8,10 +8,13 @@ export{
 
 const router = Router()
 
+router.get("/new", productsCtrl.new)
+
 router.get('/', isLoggedIn, productsCtrl.index)
 router.get('/:id', isLoggedIn, productsCtrl.show)
 router.post('/', isLoggedIn, productsCtrl.create)
 router.delete('/:id', isLoggedIn, productsCtrl.delete)
+
 
 
 router.get('/:productId/reviews/:reviewId/edit', isLoggedIn, productsCtrl.editReview) //whats the path for this in routing for related resources.

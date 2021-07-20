@@ -3,6 +3,7 @@ import { Product } from '../models/product.js'
 export {
     index,
     create,
+    newProduct as new,
     show,
     deleteProduct as delete,
     createReview,
@@ -44,6 +45,11 @@ function show(req, res) {
         })
 }
 
+function newProduct(req, res){
+    res.render('products/new', {
+        title: "New Product"
+    })
+}
 
 function create(req, res) {
     req.body.reviewer = req.user.profile
