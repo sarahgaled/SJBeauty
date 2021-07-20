@@ -1,0 +1,22 @@
+<%- include('../partials/html-head') %>
+<%- include('../partials/nav') %>
+
+  <form action="/products" method="POST">
+    <label>
+        Name:
+        <input type="text" name="name" autocomplete="off">
+    </label><br>
+    <label>Category
+        <select type="text" name="category">
+            <option value="Beauty">Beauty</option>
+            <option value="Skincare">Skincare</option>       
+    </select>
+    </label>
+    <label>
+        Clean?
+        <input type="checkbox" name="clean">
+    </label><br>
+    <button type="submit">Add Products</button><br>
+</form>
+
+<%- include('../partials/footer') %>

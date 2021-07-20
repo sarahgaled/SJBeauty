@@ -3,30 +3,14 @@
 
 <section>
     <h1>Products</h1>
-
-    <form action="/products" method="POST">
-        <label>
-            Name:
-            <input type="text" name="name" autocomplete="off">
-        </label><br>
-        <label>Category
-            <select type="text" name="category">
-                <option value="Beauty">Beauty</option>
-                <option value="Skincare">Skincare</option>       
-        </select>
-        </label>
-        <label>
-            Clean?
-            <input type="checkbox" name="clean">
-        </label><br>
-        <button type="submit">Add Products</button>
-        </form>
+  
     <h2>All the Products!</h2>
-    <ul>
+    <div class="parent-product">
         <% products.forEach(product => { %>
-            <li>Product <%= product.name %> is <%= product.clean ? 'clean' : 'not clean'%></li>      
+            <div class="product">Product <%= product.name %> is <%= product.clean ? 'clean' : 'not clean'%> - <a href="/products/<%= product._id %>">DETAILS</a></div>      
+            
         <% }) %>
-    </ul>
+    </div>
 </section>
 
 <%- include('../partials/footer') %>
