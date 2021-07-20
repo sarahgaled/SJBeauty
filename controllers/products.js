@@ -31,18 +31,37 @@ function deleteProduct(req, res) {
 
 
 function show(req, res) {
-    Product.findById(req.params.id)
-        .populate("reviewer") //huh?
-        .then(product => {
-            res.render('products/show', {
-                product,
-                title: "show products"
-            })
+    // Product.findById(req.params.id)
+    //     // .populate("reviewer") //huh?
+    //     .then(product => {
+    //         res.render('products/show', {
+    //             product,
+    //             title: "show products"
+    //         })
+    //     })
+    //     .catch(err => {
+    //         console.log(err)
+    //         res.redirect('/products')
+    //     })
+    Product.findById(req.params.id).populate([
+        {
+            path: 'reviews',
+            populate: {
+                path: 'reviewer',
+                model: 'Profile',
+                select: 'name'
+            }
+        }
+    ]).then(product => {
+        console.log(product)
+        res.render('products/show', {
+            product: product,
+            title: 'show products'
         })
-        .catch(err => {
-            console.log(err)
-            res.redirect('/products')
-        })
+    }).catch(err=>{
+        console.log(err)
+        res.redirect('/products')
+    })
 }
 
 function newProduct(req, res){
@@ -121,7 +140,7 @@ function updateReview(req, res) {
 function editReview(req, res) {
     Product.findById(req.params.productId)
         .then(product => {
-            const review = product.reviews.id(reviewId) //finding the review  by its id in this product
+            const review = product.reviews.find(review => review._id === req.params.reviewId) //finding the review  by its id in this product
             console.log(review)
             res.render('products/edit', {
                 review,
@@ -136,17 +155,20 @@ function editReview(req, res) {
 
 
 function createReview(req, res) {
-    Product.findById(req.user.profile._id) //find the product of the user that is making this request
+    console.log(req.params.id)
+    Product.findById(req.params.id) //find the product of the user that is making this request
         .then(product => { //then with that product
-            products.reviews.push(req.body) //pushing req.body into reviews array
-            products.save() //save the product , it is the resource thats holding reviews
+            console.log(product)
+            console.log(req.body)
+            product.reviews.push(req.body) //pushing req.body into reviews array
+            product.save() //save the product , it is the resource thats holding reviews
                 .then(() => {
-                    res.redirect(`/profiles/${req.user.profile._id}`)
+                    res.redirect(`/products/${req.params.id}`)
                 })
         })
         .catch(err => {
             console.log(err)
-            res.redirect(`/products/${req.user.profile}`)
+            res.redirect(`/products/${req.params.id}`)
         })
 }
 

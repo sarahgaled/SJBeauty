@@ -7,6 +7,9 @@
     <a href="/products" <%-title === "All Products" ? 'class="active"' : '' %>
       >Products</a>
     
+      <a href="/products/new">Add a product</a>
+    
+    
     <% if (user) { %>
       <a href="/auth/logout">
         <button type="submit">Logout</button>

@@ -20,6 +20,7 @@
         Rating: 
         <input type="number" name="rating" autocomplete="off">
       </label><br>
+      <input name="reviewer" value="<%= user.profile._id %>" hidden >
       <button type="submit">Add Review</button>
     </form>
   <% } %>
@@ -28,45 +29,25 @@
 <h2>All the reviews</h2>
 <ul>
     <% product.reviews.forEach(review => { %>
-    <li>
-        <%= review.review %>
-    </li>    
+    <li> <%= review.review %> </li> 
+        <section>
+           
+            <h1><%= review.name %>Edit your review here</h1>
+            <% if (review.reviewer.equals(user?.profile._id)) { %>
+                <p>
+                    <a class="link" href="/products/productId/reviews/<%= review._id %>/edit"> Edit this Review</a>
+                </p>
+                <p>
+                    <form action="/products/productId/reviews/<%= review._id %>?_method=DELETE" method="POST">
+                        <button type="submit">Delete this review</button>
+                    </form>
+                </p>
+            <% } %>
+        </section>
+       
     <% }) %>
 </ul>
 
-<section>
 
-    <h1>Edit your Review!</h1>
-    <form action="/reviews/<%= review._id %>?_method=PUT" method="POST">
-    <label>
-        Name:
-        <input
-        type="text"
-        name="name"
-        value="<%=review.name %>"
-        autocomplete="off"
-        >
-    </label>
-    <label>
-        <input type="text" name="review" value="<%=review.review %>" autocomplete="off">
-    </label>
-    <button type="submit">Edit your Review</button>
-    </form>
-    </section>
-
-    <section>
-        <p><%= review.reviewer.name %>'s Profile</p>
-        <h1><%= review.name %>Edit your review here</h1>
-        <% if (review.reviewer.equals(user?.profile._id)) { %>
-            <p>
-                <a class="link" href="/reviews/<%= review._id %>/edit"> Edit this Review</a>
-            </p>
-            <p>
-                <form action="/reviews/<%= review._id %>?_method=DELETE" method="POST">
-                    <button type="submit">Delete this review</button>
-                </form>
-            </p>
-        <% } %>
-    </section>
 
 <%- include('../partials/footer') %>
