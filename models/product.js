@@ -28,7 +28,7 @@ const productSchema = new Schema({
     category: {
         type: String,
         required: true,
-        enum: ["Beauty", "Skincare"]
+        enum: ["beauty", "skincare"]
         },
     reviews:[reviewSchema],
     

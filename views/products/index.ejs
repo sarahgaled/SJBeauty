@@ -10,14 +10,13 @@
         <% products.forEach(product => { %>
 
             <li>
-                <a href="/products/<%= product._id %>"><%= product.name %></a>
-                 is a <%= product.clean ? 'clean' : 'not clean' %> product
+                <a href="/products/<%= product._id %>" class="hover-color"><%= product.name %></a>
+                 is a <%= product.clean ? 'clean' : 'not clean' %> <%= product.category %> product
              </li>   
             
         <% }) %>
     </div>
 </ul>
 </section>
-</main>
 
 <%- include('../partials/footer') %>

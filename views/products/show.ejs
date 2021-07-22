@@ -27,7 +27,7 @@
         <input type="number" name="rating" autocomplete="off" min="1" max="5" required>
       </label><br>
       <input name="reviewer" value="<%= user.profile._id %>" hidden >
-      <button type="submit">Add Review</button>
+      <button type="submit" class="adding-button">Add Review</button>
     </form>
   <% } %>
 
@@ -42,16 +42,18 @@
         <section>
            
             <% if (review.reviewer.equals(user?.profile._id)) { %>
-                <p>
-                    <form action="/products/<%= product._id %>/reviews/<%= review._id %>/edit"> 
-                      <button type="submit">Edit this Review</button>
-                      <form>
-                </p>
-                <p>
+                
+                    
+               
+               
                     <form action="/products/<%= product._id %>/reviews/<%= review._id %>?_method=DELETE" method="POST">
-                        <button type="submit">Delete this review</button>
+                        <button type="submit" class="adding-button">Delete this review</button>
                     </form>
-                </p>
+
+                    <form action="/products/<%= product._id %>/reviews/<%= review._id %>/edit"> 
+                      <button type="submit" class="adding-button">Edit this Review</button>
+                      <form>
+                
             <% } %>
         </section>
        

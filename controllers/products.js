@@ -99,6 +99,7 @@ function index(req, res) {
 
 
 function deleteReview(req, res){
+    console.log('this is running')
     Product.findById(req.params.productId)
     .then(product => {
         product.reviews.remove({_id:req.params.reviewId})

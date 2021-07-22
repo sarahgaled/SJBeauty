@@ -86,14 +86,14 @@ textarea, select {
 border-color: #A5A58D;
 }
 
-.button.button-outline,
+/* .button.button-outline,
 button.button-outline,
 input[type="button"].button-outline,
 input[type="reset"].button-outline,
 input[type="submit"].button-outline {
   color: #FFF1E6;
   border-color: #A5A58D;
-}
+} */
 
 .button, button, input[type='button'], input[type='reset'], input[type='submit'] {
   color:#FFF1E6;
@@ -103,17 +103,19 @@ input[type="submit"].button-outline {
 }
 
 
+
+
 a{
   color: #B7B7A4;
 }
 
 a :hover{
-  color: ;
+  background-color: #CB997E;
 }
 
-/* .nav-elements{
-  border: 1px solid blue;
-} */
+.nav-elements button{ 
+  margin: 15px;
+}
 
 .nav-buttons{
   width: 100%; 
@@ -125,4 +127,12 @@ a :hover{
 
 ul li{
   list-style-type:none;
+}
+
+.adding-button:hover{
+  background-color: #CB997E;
+}
+
+.hover-color:hover{
+  color: #A5A58D;
 }
