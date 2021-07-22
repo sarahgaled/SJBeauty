@@ -18,18 +18,21 @@ html {
 }
 
 body {
-  background-color: rgb(224, 212, 212);
+  background-color: #EDDCD2;
   /* Use a system font, if none are available use an available sans-sarif font */
   font-family: 'Abril Fatface', cursive, sans-serif;
   margin: 0;
   font-size: 30px;
+  color: #CB997E;
 }
 
 nav {
-  background-color: white;
+  background-color: #DDBEA9;
   font-size: 1.6rem;
   display: flex;
-  justify-content: center;
+  justify-content: flex-end;
+  align-items: center;
+  padding-right: 2%;
 }
 
 main {
@@ -37,15 +40,89 @@ main {
   align-items: center;
   justify-content: center;
   flex-direction: column;
+  padding: 2rem;
 }
 
 h1 {
   font-size: 3.6rem;
 }
 
-#review-form{
-  display: block;
-    /* width: fit-content;
-    position: absolute;
-    left: 3%; */
+
+input[type='color']:focus, 
+input[type='date']:focus, 
+input[type='datetime']:focus, 
+input[type='datetime-local']:focus, 
+input[type='email']:focus, 
+input[type='month']:focus, 
+input[type='number']:focus, 
+input[type='password']:focus, 
+input[type='search']:focus, 
+input[type='tel']:focus, 
+input[type='text']:focus, 
+input[type='url']:focus, 
+input[type='week']:focus, 
+input:not([type]):focus, 
+textarea:focus, 
+select:focus {
+  border-color: #B7B7A4;
+  background-color: white;
+}
+
+input[type='color'], 
+input[type='date'], 
+input[type='datetime'], 
+input[type='datetime-local'], 
+input[type='email'], 
+input[type='month'], 
+input[type='number'], 
+input[type='password'], 
+input[type='search'], 
+input[type='tel'], 
+input[type='text'], 
+input[type='url'], 
+input[type='week'], 
+input:not([type]), 
+textarea, select {
+border-color: #A5A58D;
+}
+
+.button.button-outline,
+button.button-outline,
+input[type="button"].button-outline,
+input[type="reset"].button-outline,
+input[type="submit"].button-outline {
+  color: #FFF1E6;
+  border-color: #A5A58D;
+}
+
+.button, button, input[type='button'], input[type='reset'], input[type='submit'] {
+  color:#FFF1E6;
+  background-color: #A5A58D;
+  border: none;
+  font-family: 'Abril Fatface', cursive, sans-serif;
+}
+
+
+a{
+  color: #B7B7A4;
+}
+
+a :hover{
+  color: ;
+}
+
+/* .nav-elements{
+  border: 1px solid blue;
+} */
+
+.nav-buttons{
+  width: 100%; 
+}
+
+.nav-buttons button{
+  margin: 15px; 
+}
+
+ul li{
+  list-style-type:none;
 }

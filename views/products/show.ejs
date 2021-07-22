@@ -1,12 +1,12 @@
 <%- include('../partials/html-head') %>
 <%- include('../partials/nav') %>
 
+<main>
 <%= product.name %>
 <%= product.category %>
 <%= product.clean ? "clean" : "not clean" %>
 
 <%= Math.floor(product.reviews.reduce((total,review) =>  total + review.rating, 0) / product.reviews.length) %>
-
 
 <h2>Reviews</h2>
 
@@ -16,15 +16,15 @@
     <form action="/products/<%= product._id %>/reviews" method="POST" id="review-form">
       <label>
         Name: 
-        <input type="text" name="name" autocomplete="off">
+        <input type="text" name="name" autocomplete="off" required>
       </label><br>
       <label>
         Review: 
-        <input type="text" name="review" autocomplete="off">
+        <input type="text" name="review" autocomplete="off" required>
       </label><br>
       <label>
         Rating: 
-        <input type="number" name="rating" autocomplete="off">
+        <input type="number" name="rating" autocomplete="off" min="1" max="5" required>
       </label><br>
       <input name="reviewer" value="<%= user.profile._id %>" hidden >
       <button type="submit">Add Review</button>
@@ -57,7 +57,7 @@
        
     <% }) %>
 </ul>
-
+</main>
 
 
 <%- include('../partials/footer') %>

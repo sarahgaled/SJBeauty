@@ -1,23 +1,23 @@
 <%- include('../partials/html-head') %>
 <%- include('../partials/nav') %>
-
+<main>
 <section>
-    <h1>Products</h1>
     <h2><%= title %></h2>
     <h4>Add your favorite beauty products here</h4>
-    
+
     <ul>
     <div class="parent-product"></div>
         <% products.forEach(product => { %>
 
             <li>
                 <a href="/products/<%= product._id %>"><%= product.name %></a>
-                 is <%= product.clean ? 'clean' : 'not clean' %>
+                 is a <%= product.clean ? 'clean' : 'not clean' %> product
              </li>   
             
         <% }) %>
     </div>
 </ul>
 </section>
+</main>
 
 <%- include('../partials/footer') %>

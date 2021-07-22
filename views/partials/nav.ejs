@@ -4,21 +4,28 @@
 </head>
 <body>
   <nav>
-    <a href="/products" <%-title === "All Products" ? 'class="active"' : '' %>
-      >Products</a>
-    
-      <a href="/products/new">Add a product</a>
-    
-    
+    <div class="nav-buttons">
+    <a href="/products" <%-title === "All Products" ? 'class="active"' : '' %>>
+      <button type="submit">Products</button>
+    </a>
+  
+    <a href="/products/new">
+      <button type="submit">Add a product</button>
+    </a>
+  </div>
+
+    <div class="nav-elements">
     <% if (user) { %>
       <a href="/auth/logout">
-        <button type="submit">Logout</button>
+        <button type="submit" id="logout">Logout</button>
       </a>
-    <% } else { %>
-      <a href="/auth/google" class="siwg-link">
-        <button type="submit" class="siwg">
-          <img id="siwg-image" alt="Sign in with Google" />
-        </button>
-      </a>
-    <% } %>
-  </nav>
+      
+      <% } else { %>
+        <a href="/auth/google" class="siwg-link">
+          <button type="submit" class="siwg">
+            <img id="siwg-image" alt="Sign in with Google" />
+          </button>
+        </a>
+        <% } %>
+      </div>
+      </nav>
