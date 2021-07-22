@@ -120,9 +120,12 @@ function updateReview(req, res) {
         .then(product => {
             const review = product.reviews.id(req.params.reviewId)
             if (review.reviewer.equals(req.user.profile._id)) { //if the owner of the reviewer has submitted the request
-                review.update(req.body, { new: true })//if no new true here
+                review.name = req.body.name 
+                review.review = req.body.review
+                review.rating = req.body.rating
+                product.save()
                     .then(review => { //what exists here is the old data for the review
-                        res.redirect(`/reviews/${review._id}`)
+                        res.redirect(`/products/${req.params.productId}`)
                     })
             } else { //if the owner of the taco has not submitted the request
                 throw new Error("NOT AUTHORIZED")
@@ -141,6 +144,7 @@ function editReview(req, res) {
             const review = product.reviews.id(req.params.reviewId) //finding the review  by its id in this product
             console.log(review)
             res.render('products/edit', {
+                product,
                 review,
                 title: "edit reviews"
             })
