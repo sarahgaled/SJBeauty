@@ -2,8 +2,8 @@ import { Product } from '../models/product.js'
 
 export {
     index,
-    create,
     newProduct as new,
+    create,
     show,
     deleteProduct as delete,
     createReview,
@@ -15,18 +15,17 @@ export {
 
 
 function deleteProduct(req, res) {
-    Product.findById(req.params.profile)
-        .then(product => {
-            product.reviews.delete({ _id: req.params.id })
-            profile.save()
-                .then(() => {
-                    res.redirect(`/products/${req.user.profile._id}`)
-                })
-        })
-        .catch(err => {
-            console.log(err)
-            res.redirect(`/products/${req.user.profile._id}`)
-        })
+    Product.findById(req.params.id)
+    .then(product => {
+            product.delete()
+            .then(() => {
+                res.redirect('/products')
+            })
+    })
+    .catch(err => {
+        console.log(err)
+        res.redirect('/products')
+    })
 }
 
 
@@ -64,23 +63,24 @@ function show(req, res) {
     })
 }
 
+
+function create(req, res) {
+   
+    req.body.clean = !!req.body.clean //dont forget to create check box for this
+    Product.create(req.body)
+    .then(product => {
+        res.redirect('/products')
+    })
+    .catch(err => {
+        console.log(err)
+        res.redirect('/products')
+    })
+}
+
 function newProduct(req, res){
     res.render('products/new', {
         title: "New Product"
     })
-}
-
-function create(req, res) {
-    req.body.reviewer = req.user.profile
-    req.body.clean = !!req.body.clean //dont forget to create check box for this
-    Product.create(req.body)
-        .then(product => {
-            res.redirect('/products')
-        })
-        .catch(err => {
-            console.log(err)
-            res.redirect('/products')
-        })
 }
 
 function index(req, res) {
@@ -88,7 +88,7 @@ function index(req, res) {
         .then(products => {
             res.render('products/index', {
                 products,
-                title: "productsss"
+                title: "Products"
             })
         })
         .catch(err => {
@@ -99,31 +99,29 @@ function index(req, res) {
 
 
 function deleteReview(req, res){
-    Product.findById(req.params.id)
+    Product.findById(req.params.productId)
     .then(product => {
-        if(review.reviewer.equals(req.user.profile._id)){
-            review.delete()
-            .then(() => {
-                res.redirect('/products')
-            })
-        } else {
-            throw new Error ('NOT AUTHORIZED')
-        }
+        product.reviews.remove({_id:req.params.reviewId})
+        product.save()
+        .then(() => {
+            res.redirect(`/products/${req.params.productId}`)
+        })
     })
     .catch(err => {
         console.log(err)
-        res.redirect('/products')
+        res.redirect(`/products/${req.params.productId}`)
     })
 }
 
 
 function updateReview(req, res) {
-    Product.findById(req.params.id)
+    console.log(req.params)
+    Product.findById(req.params.productId)
         .then(product => {
+            const review = product.reviews.id(req.params.reviewId)
             if (review.reviewer.equals(req.user.profile._id)) { //if the owner of the reviewer has submitted the request
                 review.update(req.body, { new: true })//if no new true here
                     .then(review => { //what exists here is the old data for the review
-                        console.log(review)
                         res.redirect(`/reviews/${review._id}`)
                     })
             } else { //if the owner of the taco has not submitted the request
@@ -140,7 +138,7 @@ function updateReview(req, res) {
 function editReview(req, res) {
     Product.findById(req.params.productId)
         .then(product => {
-            const review = product.reviews.find(review => review._id === req.params.reviewId) //finding the review  by its id in this product
+            const review = product.reviews.id(req.params.reviewId) //finding the review  by its id in this product
             console.log(review)
             res.render('products/edit', {
                 review,
@@ -155,7 +153,7 @@ function editReview(req, res) {
 
 
 function createReview(req, res) {
-    console.log(req.params.id)
+    req.body.reviewer = req.user.profile
     Product.findById(req.params.id) //find the product of the user that is making this request
         .then(product => { //then with that product
             console.log(product)

@@ -6,7 +6,7 @@
 <section>
 
     <h1>Edit your Review!</h1>
-    <form action="/products/productId/reviews/<%= review._id %>?_method=PUT" method="POST">
+    <form action="/products/<%= product._id %>/reviews/<%= review._id %>?_method=PUT" method="POST">
     <label>
         Name:
         <input

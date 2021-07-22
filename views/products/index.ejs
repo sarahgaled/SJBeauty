@@ -3,14 +3,21 @@
 
 <section>
     <h1>Products</h1>
-  
-    <h2>All the Products!</h2>
-    <div class="parent-product">
+    <h2><%= title %></h2>
+    <h4>Add your favorite beauty products here</h4>
+    
+    <ul>
+    <div class="parent-product"></div>
         <% products.forEach(product => { %>
-            <div class="product">Product <%= product.name %> is <%= product.clean ? 'clean' : 'not clean'%> - <a href="/products/<%= product._id %>">DETAILS</a></div>      
+
+            <li>
+                <a href="/products/<%= product._id %>"><%= product.name %></a>
+                 is <%= product.clean ? 'clean' : 'not clean' %>
+             </li>   
             
         <% }) %>
     </div>
+</ul>
 </section>
 
 <%- include('../partials/footer') %>

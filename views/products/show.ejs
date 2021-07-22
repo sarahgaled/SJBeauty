@@ -1,13 +1,19 @@
 <%- include('../partials/html-head') %>
 <%- include('../partials/nav') %>
 
+<%= product.name %>
+<%= product.category %>
+<%= product.clean ? "clean" : "not clean" %>
 
-<h1>Reviews</h1>
+<%= Math.floor(product.reviews.reduce((total,review) =>  total + review.rating, 0) / product.reviews.length) %>
 
-<h2>What was your experience with this product?</h2>
+
+<h2>Reviews</h2>
+
+<h3>What was your experience with this product?</h3>
 <% if (user) { %>
 
-    <form action="/products/<%= product._id %>/reviews" method="POST">
+    <form action="/products/<%= product._id %>/reviews" method="POST" id="review-form">
       <label>
         Name: 
         <input type="text" name="name" autocomplete="off">
@@ -29,16 +35,20 @@
 <h2>All the reviews</h2>
 <ul>
     <% product.reviews.forEach(review => { %>
-    <li> <%= review.review %> </li> 
+    <li> <%= review.name %> 
+        <%= review.review %> 
+        <%= review.rating %>/5 
+    </li> 
         <section>
            
-            <h1><%= review.name %>Edit your review here</h1>
             <% if (review.reviewer.equals(user?.profile._id)) { %>
                 <p>
-                    <a class="link" href="/products/productId/reviews/<%= review._id %>/edit"> Edit this Review</a>
+                    <form action="/products/<%= product._id %>/reviews/<%= review._id %>/edit"> 
+                      <button type="submit">Edit this Review</button>
+                      <form>
                 </p>
                 <p>
-                    <form action="/products/productId/reviews/<%= review._id %>?_method=DELETE" method="POST">
+                    <form action="/products/<%= product._id %>/reviews/<%= review._id %>?_method=DELETE" method="POST">
                         <button type="submit">Delete this review</button>
                     </form>
                 </p>
