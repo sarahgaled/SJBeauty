@@ -15,7 +15,7 @@ App Images:
 ![](images/sjbeauty-add-products.png)
 ![](images/sjbeauty-products-page.png)
 ![](images/sjbeauty-product-review-page.png)
-![](images/sjbeauty-edit-review-page.png)
+![](images/sjbeauty-edit-review.png)
 
 
 Wireframe Images:
