@@ -8,7 +8,7 @@ Trello Board:
 - [trello](https://trello.com/b/S3T3ztEl/sjbeauty)
 
 Trello Images:
-- ![](images/Trello-Board.png)
+![](images/Trello-Board.png)
 
 App Images:
 
