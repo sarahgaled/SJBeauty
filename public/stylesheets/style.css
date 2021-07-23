@@ -159,6 +159,9 @@ ul li{
   border-radius: 5px;
   padding: 0 10px;
   background-color: rgb(230, 203, 167);
+  max-width: 630px;
+  flex-wrap: wrap;
+  word-break: normal;
 }
 
 input{

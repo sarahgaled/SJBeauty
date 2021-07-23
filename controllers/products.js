@@ -30,18 +30,6 @@ function deleteProduct(req, res) {
 
 
 function show(req, res) {
-    // Product.findById(req.params.id)
-    //     // .populate("reviewer") //huh?
-    //     .then(product => {
-    //         res.render('products/show', {
-    //             product,
-    //             title: "show products"
-    //         })
-    //     })
-    //     .catch(err => {
-    //         console.log(err)
-    //         res.redirect('/products')
-    //     })
     Product.findById(req.params.id).populate([
         {
             path: 'reviews',
@@ -52,7 +40,6 @@ function show(req, res) {
             }
         }
     ]).then(product => {
-        console.log(product)
         res.render('products/show', {
             product: product,
             title: 'show products'
@@ -99,7 +86,6 @@ function index(req, res) {
 
 
 function deleteReview(req, res){
-    console.log('this is running')
     Product.findById(req.params.productId)
     .then(product => {
         product.reviews.remove({_id:req.params.reviewId})
@@ -116,7 +102,6 @@ function deleteReview(req, res){
 
 
 function updateReview(req, res) {
-    console.log(req.params)
     Product.findById(req.params.productId)
         .then(product => {
             const review = product.reviews.id(req.params.reviewId)
