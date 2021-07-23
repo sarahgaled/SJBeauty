@@ -2,14 +2,13 @@
 <%- include('../partials/nav') %>
 
 <main>
-<%= product.name %>
-<%= product.category %>
-<%= product.clean ? "clean" : "not clean" %>
+<h1><%= product.name %></h1> 
+    <%= product.category %> -
+    <%= product.clean ? "clean" : "not clean" %> -
 
-<%= Math.floor(product.reviews.reduce((total,review) =>  total + review.rating, 0) / product.reviews.length) %>
-
-<h2>Reviews</h2>
-
+<%= product.reviews.length ? Math.floor(product.reviews.reduce((total,review) =>  total + review.rating, 0) / product.reviews.length) : "no ratings yet" %>
+<br>
+<br>
 <h3>What was your experience with this product?</h3>
 <% if (user) { %>
 
@@ -17,45 +16,45 @@
       <label>
         Name: 
         <input type="text" name="name" autocomplete="off" required>
-      </label><br>
+      </label>
       <label>
         Review: 
         <input type="text" name="review" autocomplete="off" required>
-      </label><br>
+      </label>
       <label>
         Rating: 
         <input type="number" name="rating" autocomplete="off" min="1" max="5" required>
-      </label><br>
+      </label>
       <input name="reviewer" value="<%= user.profile._id %>" hidden >
-      <button type="submit" class="adding-button">Add Review</button>
+     <div id="add-review"> <button type="submit" class="adding-button">Add Review<i class="fas fa-plus"></i></button></div>
     </form>
   <% } %>
 
 
-<h2>All the reviews</h2>
+<h2>Reviews about this product:</h2>
 <ul>
     <% product.reviews.forEach(review => { %>
-    <li> <%= review.name %> 
-        <%= review.review %> 
+    <li class="review"> <%= review.name %> -
+       "<%= review.review %>"
         <%= review.rating %>/5 
-    </li> 
-        <section>
+        <section id="action-buttons">
            
             <% if (review.reviewer.equals(user?.profile._id)) { %>
                 
                     
                
+              <form action="/products/<%= product._id %>/reviews/<%= review._id %>/edit"> 
+                <button type="submit" class="adding-button">Edit&nbsp;<i class="far fa-edit"></i></button>
+              </form>
                
                     <form action="/products/<%= product._id %>/reviews/<%= review._id %>?_method=DELETE" method="POST">
-                        <button type="submit" class="adding-button">Delete this review</button>
+                        <button type="submit" class="adding-button">Delete<i class="far fa-trash-alt"></i></button>
                     </form>
 
-                    <form action="/products/<%= product._id %>/reviews/<%= review._id %>/edit"> 
-                      <button type="submit" class="adding-button">Edit this Review</button>
-                      <form>
                 
             <% } %>
         </section>
+    </li> 
        
     <% }) %>
 </ul>

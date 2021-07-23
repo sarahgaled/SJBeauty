@@ -99,7 +99,8 @@ input[type="submit"].button-outline {
   color:#FFF1E6;
   background-color: #A5A58D;
   border: none;
-  font-family: 'Abril Fatface', cursive, sans-serif;
+  text-transform: capitalize;
+  font-size: 15px;
 }
 
 
@@ -119,6 +120,7 @@ a :hover{
 
 .nav-buttons{
   width: 100%; 
+  font-family: 'Abril Fatface', cursive, sans-serif !important;
 }
 
 .nav-buttons button{
@@ -126,7 +128,7 @@ a :hover{
 }
 
 ul li{
-  list-style-type:none;
+  list-style-type: none;
 }
 
 .adding-button:hover{
@@ -135,4 +137,32 @@ ul li{
 
 .hover-color:hover{
   color: #A5A58D;
+}
+
+#image{
+  height:50.5rem;
+  justify-content: space-between;
+  align-items: center;
+  margin: 50px;
+}
+
+#add-review{
+  display: flex;
+  justify-content: center;
+}
+
+#action-buttons{
+  display: flex;
+  justify-content: space-around;
+}
+
+.review{
+  border: 2px #CB997E solid;
+  border-radius: 5px;
+  padding: 0 10px;
+  background-color: rgb(230, 203, 167);
+}
+
+input{
+  color: brown;
 }
