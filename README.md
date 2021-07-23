@@ -22,6 +22,12 @@ Credit: Stock Photo
 - [Pixabay](https://pixabay.com/photos/toner-skin-skincare-cooling-facial-906142/)
 
 Technologies and sites used:
+- Javascript
+- HTML
+- CSS
+- MongoDB
+- Express
+- Mongoose
 - Google Oauth
 - Google Fonts
 - Milligram - CSS Framework
