@@ -11,6 +11,12 @@ Trello Images:
 ![](images/trello-board.png)
 
 App Images:
+![](images/sjbeauty-landing-page.png)
+![](images/sjbeauty-add-products.png)
+![](images/sjbeauty-products-page.png)
+![](images/sjbeauty-product-review-page.png)
+![](images/sjbeauty-edit-review-page.png)
+
 
 Wireframe Images:
 
