@@ -1,18 +1,28 @@
-# MEN Stack with OAuth Template
+SJBeauty
 
-This is a MEN Stack template that includes OAuth.
+Getting Started 
+App Link:
+- [sjbeauty](https://sj-beauty-reviews.herokuapp.com/)
+  
+Trello Board:
+- [trello](https://trello.com/b/S3T3ztEl/sjbeauty)
 
-Use this to go build things! 🚀
+Trello Images:
+- ![](images/Trello-Board.png)
 
-## To Use This Template
+App Images:
 
-__Replace `<name-of-your-app-here>` in the commands below with the name of your app!__
+Wireframe Images:
 
+Technologies features, sites used:
+- google Oauth
+- google fonts
+- milligram
+- font awesome
+- stock photo
 
-features, sites used:
-google Oauth
-google fonts
-
+Next Steps:
+- add more cool features
 
 
 
