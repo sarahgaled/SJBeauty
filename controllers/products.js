@@ -30,12 +30,12 @@ function deleteProduct(req, res) {
 
 
 function show(req, res) {
-    Product.findById(req.params.id).populate([
+    Product.findById(req.params.id).populate([ //populating a sub document
         {
             path: 'reviews',
             populate: {
                 path: 'reviewer',
-                model: 'Profile',
+                model: 'Profile', //populating the path of reviewer with the model: profile -its to contain all the user data taht we need to display the name of a review card
                 select: 'name'
             }
         }
@@ -125,10 +125,9 @@ function updateReview(req, res) {
 
 
 function editReview(req, res) {
-    Product.findById(req.params.productId)
+    Product.findById(req.params.productId)//find the product that the reviews live in
         .then(product => {
-            const review = product.reviews.id(req.params.reviewId) //finding the review  by its id in this product
-            console.log(review)
+            const review = product.reviews.id(req.params.reviewId) //finding the review  by its id in this product, looking at the array of reviews inside the product and find a review where the id matches the req.params.review.id that i just sent back
             res.render('products/edit', {
                 product,
                 review,
@@ -143,15 +142,13 @@ function editReview(req, res) {
 
 
 function createReview(req, res) {
-    req.body.reviewer = req.user.profile
-    Product.findById(req.params.id) //find the product of the user that is making this request
+    req.body.reviewer = req.user.profile //setting the profile to the user. tie the person that submitted that review to the reviewer. profile of whoever is logged in and attaching it to the actual review thats being created. this person that is submitting the request, they r the reviewer.
+    Product.findById(req.params.id) //find the product of the user that is making this request. the req.params.id is accessible through the route i built
         .then(product => { //then with that product
-            console.log(product)
-            console.log(req.body)
-            product.reviews.push(req.body) //pushing req.body into reviews array
-            product.save() //save the product , it is the resource thats holding reviews
+            product.reviews.push(req.body) //pushing req.body-form data that you sent into reviews (property) array
+            product.save() //save the product , it is the resource thats holding reviews, which saves this newly pushed review
                 .then(() => {
-                    res.redirect(`/products/${req.params.id}`)
+                    res.redirect(`/products/${req.params.id}`) //sends me back to the page that displays the details of that product, this route is directing the user to that specific product
                 })
         })
         .catch(err => {
