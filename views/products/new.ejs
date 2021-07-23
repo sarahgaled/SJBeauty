@@ -6,18 +6,18 @@
     <label>
         Name:
         <input type="text" name="name" autocomplete="off">
-    </label><br>
+    </label>
     <label>Category
-        <select type="text" name="category">
+        <select type="text" name="category" class="select-input">
             <option value="beauty">Beauty</option>
             <option value="skincare">Skincare</option>       
     </select>
     </label>
     <label>
         Clean?
-        <input type="checkbox" name="clean">
-    </label><br>
-    <button type="submit" class="adding-button">Add Products<i class="fas fa-plus"></i></button><br>
+        <input type="checkbox" name="clean" class="color">
+    </label>
+    <div id="add-review"><button type="submit" class="adding-button">Add Products&nbsp;<i class="fas fa-plus"></i></button></div>
 </form>
 </main>
 <%- include('../partials/footer') %>

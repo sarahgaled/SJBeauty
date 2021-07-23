@@ -26,7 +26,7 @@
         <input type="number" name="rating" autocomplete="off" min="1" max="5" required>
       </label>
       <input name="reviewer" value="<%= user.profile._id %>" hidden >
-     <div id="add-review"> <button type="submit" class="adding-button">Add Review<i class="fas fa-plus"></i></button></div>
+     <div id="add-review"> <button type="submit" class="adding-button">Add Review&nbsp;<i class="fas fa-plus"></i></button></div>
     </form>
   <% } %>
 
@@ -48,7 +48,7 @@
               </form>
                
                     <form action="/products/<%= product._id %>/reviews/<%= review._id %>?_method=DELETE" method="POST">
-                        <button type="submit" class="adding-button">Delete<i class="far fa-trash-alt"></i></button>
+                        <button type="submit" class="adding-button">Delete&nbsp;<i class="far fa-trash-alt"></i></button>
                     </form>
 
                 

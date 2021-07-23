@@ -104,8 +104,6 @@ input[type="submit"].button-outline {
 }
 
 
-
-
 a{
   color: #B7B7A4;
 }
@@ -164,5 +162,14 @@ ul li{
 }
 
 input{
-  color: brown;
+  color: #774936;
 }
+
+button{
+  font-family: 'Abril Fatface', cursive, sans-serif !important;
+}
+
+.select-input{
+  color: #774936;
+}
+
