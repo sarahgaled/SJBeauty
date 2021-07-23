@@ -28,6 +28,8 @@ Technologies and sites used:
 - MongoDB
 - Express
 - Mongoose
+- Node.js
+- Passport
 - Google Oauth
 - Google Fonts
 - Milligram - CSS Framework
